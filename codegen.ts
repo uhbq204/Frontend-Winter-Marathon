@@ -5,7 +5,7 @@ const config: CodegenConfig = {
   overwrite: true,
   ignoreNoDocuments: true,
   schema: "http://localhost:3200/graphql",
-  documents: "src/shared/graphql/**/*.graphql",
+  documents: ["src/shared/graphql/**/*.graphql", "src/features/**/*.graphql"],
   generates: {
     'src/__generated__/output.ts': {
       plugins: [
