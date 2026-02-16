@@ -1,11 +1,14 @@
 'use client'
 
-import { LoginDocument, RegisterDocument } from "@/__generated__/graphql"
+import { LoginDocument, RegisterDocument, type AuthInput } from "@/__generated__/graphql"
 import { Button } from "@/shared/components/ui/button"
 import { Input } from "@/shared/components/ui/input"
-import { PAGES } from "@/shared/config/page.config"
 import { useMutation } from "@apollo/client/react"
-import Link from "next/link"
+import { AuthChangeTypeForm } from "./AuthChangeTypeForm"
+import { useForm } from "react-hook-form"
+import { isEmailRegex } from "../utils/is-email.regex"
+import { cn } from "@/shared/utils"
+import { toast } from "react-hot-toast/headless"
 
 
 
@@ -15,18 +18,42 @@ interface Props {
 
 export function AuthForm({ type }: Props) {
     const isLogin = type === 'login'
-    const [register, {data, loading, error}] = useMutation(
-        isLogin ? LoginDocument : RegisterDocument
+
+    const {register, handleSubmit, formState: { errors, isValid }} = useForm<AuthInput>({
+        mode: 'onChange',
+        defaultValues: {
+            email: '',
+            password: ''
+        }
+    })
+
+    const [auth, { loading }] = useMutation(
+        isLogin ? LoginDocument : RegisterDocument,
+        {
+            onCompleted: () => {
+                toast.success(
+                    isLogin ? 'Logged in successfully!' : 'Registered successfully!',
+                    {
+                        id: 'auth-success'
+                    }
+                )
+            },
+
+            onError: error => {
+                toast.error(error.message, {
+                    id: 'auth-error'
+                })
+            }
+        }
     )
 
-    // register ({
-    //     variables: {
-    //         data: {
-    //             email: "",
-    //             password: ""
-    //         }
-    //     }
-    // })
+    const handleAuth = (data: AuthInput) => {
+        auth({
+            variables: {
+                data
+            }
+        })
+    }
 
     return (
         <div className="flex h-screen">
@@ -35,40 +62,61 @@ export function AuthForm({ type }: Props) {
                     {isLogin ? 'Login' : 'Register'}
                 </h1>
 
-                <form className="space-y-3">
+                <form className="space-y-3" onSubmit={handleSubmit(handleAuth)}>
                     <Input
+                        {...register('email', {
+                            required: true, 
+                            pattern: {
+                                value: isEmailRegex, 
+                                message: 'Invalid email address'
+                            }
+                        })}
                         type="email"
-                        name="email"
-                        placeholder="Email"
-                        required
+                        placeholder="Enter your email:"
+                        className={cn(
+                            'border border-transparent transition-colors', 
+                            errors.email ? "text-destructive" : ""
+                        )}
                     />
-                
+
+                    {errors.email && (
+                        <p className="text-sm text-destructive">
+                            {errors.email.message}
+                        </p>
+                    )}
+
+                    <Input
+                        {...register('password', {
+                            required: true,
+                            minLength: {
+                                value: 6,
+                                message: 'Password must be at least 6 characters'
+                            }
+                        })}
+                        type="password"
+                        placeholder="Enter your password:"
+                        className={cn(
+                            'border border-transparent transition-colors', 
+                            errors.password ? "text-destructive" : ""
+                        )}
+                    />
+
+                    {errors.password && (
+                        <p className="text-sm text-destructive">
+                            {errors.password.message}
+                        </p>
+                    )}
+
                     <div className="text-center">
                         <Button
                             type="submit"
-                            disabled={loading}
+                            disabled={!isValid || loading}
                         >
                             {isLogin ? 'Login' : 'Register'}
                         </Button>
                     </div>
                 </form>
-                <div className="mt-3 text-center">
-                    {isLogin ? (
-                        <div>
-                            Don't have an account?{" "}
-                            <Link href={PAGES.REGISTER}
-                            className="underline"
-                            >Register</Link>
-                        </div>
-                    ) : (
-                        <div>
-                            Already have an account?{" "}
-                            <Link href={PAGES.LOGIN}
-                            className="underline"
-                            >Login</Link>
-                        </div>
-                    )}
-                </div>
+                <AuthChangeTypeForm isLogin={isLogin} />
             </div>
         </div>
     )
