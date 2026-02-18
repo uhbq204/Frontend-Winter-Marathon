@@ -7,8 +7,10 @@ import { useMutation } from "@apollo/client/react"
 import { AuthChangeTypeForm } from "./AuthChangeTypeForm"
 import { useForm } from "react-hook-form"
 import { isEmailRegex } from "../utils/is-email.regex"
-import { cn } from "@/shared/utils"
-import { toast } from "react-hot-toast/headless"
+import { toast } from "react-hot-toast"
+import Image from "next/image"
+
+
 
 
 
@@ -57,9 +59,9 @@ export function AuthForm({ type }: Props) {
 
     return (
         <div className="flex h-screen">
-            <div className="m-auto w-sm rounded-lg bg-linear-to-tr from-[#8062ee] to-[#a088fc] p-5 text-white shadow-lg">
-                <h1 className="mb-5 text-center text-4xl font-bold">
-                    {isLogin ? 'Login' : 'Register'}
+            <div className="m-auto w-sm rounded-lg bg-linear-to-tr from-[#8062ee] to-[#a088fc] p-10 text-white shadow-lg relative">
+                <h1 className="mb-5 text-center text-[2.3rem] font-bold">
+                    {isLogin ? 'Sign In' : 'Sign Up'}
                 </h1>
 
                 <form className="space-y-3" onSubmit={handleSubmit(handleAuth)}>
@@ -73,14 +75,11 @@ export function AuthForm({ type }: Props) {
                         })}
                         type="email"
                         placeholder="Enter your email:"
-                        className={cn(
-                            'border border-transparent transition-colors', 
-                            errors.email ? "text-destructive" : ""
-                        )}
+                        aria-invalid={!!errors.email}
                     />
 
                     {errors.email && (
-                        <p className="text-sm text-destructive">
+                        <p className="text-xs text-destructive block  -mt-1">
                             {errors.email.message}
                         </p>
                     )}
@@ -95,14 +94,11 @@ export function AuthForm({ type }: Props) {
                         })}
                         type="password"
                         placeholder="Enter your password:"
-                        className={cn(
-                            'border border-transparent transition-colors', 
-                            errors.password ? "text-destructive" : ""
-                        )}
+                        aria-invalid={!!errors.password}
                     />
 
                     {errors.password && (
-                        <p className="text-sm text-destructive">
+                        <p className="text-xs text-destructive block  -mt-1">
                             {errors.password.message}
                         </p>
                     )}
@@ -112,11 +108,20 @@ export function AuthForm({ type }: Props) {
                             type="submit"
                             disabled={!isValid || loading}
                         >
-                            {isLogin ? 'Login' : 'Register'}
+                            {isLogin ? 'Sign In' : 'Sign Up'}
                         </Button>
                     </div>
                 </form>
                 <AuthChangeTypeForm isLogin={isLogin} />
+
+                <Image
+                    src="/emotions/salad.png"
+                    alt="Salad"
+                    width={200}
+                    height={200}
+                    className="absolute -bottom-16 -left-16 -rotate-12"
+                    draggable={false}
+                />
             </div>
         </div>
     )
