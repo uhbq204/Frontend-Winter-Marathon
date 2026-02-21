@@ -52,6 +52,15 @@
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
 
+  --color-gray-100: #f6f6f6;
+  --color-gray-200: #ededed;
+  --color-gray-300: #e3e3e3;
+  --color-gray-400: #cfcfcf;
+  --color-gray-500: #a8a8a8;
+  --color-gray-600: #7a7a7a;
+  --color-gray-700: #4f4f4f;
+  --color-gray-800: #2f2f2f;
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -64,7 +73,7 @@
 :root {
   --radius: 0.625rem;
 
-  --background: #f3f4f6;
+  --background: #f0f0f0;
   --foreground: #1c1c1c;
 
   --card: #fff;
@@ -74,8 +83,8 @@
   --popover-foreground: #111;
 
    /* Brand colors */
-  --primary: #7c5cff;
-  --primary-dark: #5a3dcf;
+  --primary: #9b7dfe;
+  --primary-dark: #7962dd;
   --primary-foreground: #ffffff;
 
   --accent: #ffd54e;
@@ -88,6 +97,15 @@
 
   --muted: #f3f4f6;
   --muted-foreground: #111;
+
+  --gray-100: #f6f6f6;
+  --gray-200: #ededed;
+  --gray-300: #e3e3e3;
+  --gray-400: #cfcfcf;
+  --gray-500: #a8a8a8;
+  --gray-600: #7a7a7a;
+  --gray-700: #4f4f4f;
+  --gray-800: #2f2f2f;
 
   --destructive: #ff4d4f;
 
