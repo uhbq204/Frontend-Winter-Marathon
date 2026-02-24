@@ -7,8 +7,11 @@ import { PAGES } from "@/shared/config/page.config";
 import { Button } from "@/shared/components/ui/button";
 import { Bell, Headset } from "lucide-react";
 import { UserInfo } from "@/shared/components/custom-ui/user-info/UserInfo";
+import { useAuth } from "@/features/auth/hooks/useAuth";
 
 export function Header() {
+    const {user} = useAuth()
+
     return (
         <header className="p-5">
             <div className="flex items-center gap-6">
@@ -30,9 +33,9 @@ export function Header() {
                 </Button>
                 
                 <UserInfo
-                    avatarUrl="https://upload.wikimedia.org/wikipedia/commons/1/1f/Woman_1.jpg"
-                    name="Jessica"
-                    email="jessica@example.com"
+                    avatarUrl={"https://upload.wikimedia.org/wikipedia/commons/1/1f/Woman_1.jpg"}
+                    name={"Anonymous"}
+                    email={user?.email || ''}
                 />
             </div>
         </header>
