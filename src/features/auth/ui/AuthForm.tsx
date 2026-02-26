@@ -9,6 +9,8 @@ import { useForm } from "react-hook-form"
 import { isEmailRegex } from "../utils/is-email.regex"
 import { toast } from "react-hot-toast"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
+import { PAGES } from "@/shared/config/page.config"
 
 
 
@@ -30,6 +32,7 @@ export function AuthForm({ type }: Props) {
     })
 
     const client = useApolloClient()
+    const router = useRouter()
 
     const [auth, { loading }] = useMutation<
         LoginMutation | RegisterMutation,
@@ -53,6 +56,8 @@ export function AuthForm({ type }: Props) {
                         id: 'auth-success'
                     }
                 )
+
+                router.replace(PAGES.DASHBOARD)
             },
 
             onError: error => {

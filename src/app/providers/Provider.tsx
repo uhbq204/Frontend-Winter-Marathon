@@ -4,11 +4,14 @@ import { getApolloClient } from "@/shared/lib/apollo/apollo.client";
 import { ApolloProvider } from "@apollo/client/react";
 import { Toaster } from "react-hot-toast";
 
-const apllo = getApolloClient()
+const apollo = getApolloClient()
 
 export function Provider({ children }: { children: React.ReactNode }) {
-    return <ApolloProvider client={apllo}>
+    return <ApolloProvider client={apollo}>
         {children}
-        <Toaster position="top-center" />
+        <Toaster 
+            position="top-center"
+            containerClassName="mt-14 font-mono text-sm"
+        />
         </ApolloProvider>
 }

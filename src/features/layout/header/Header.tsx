@@ -8,6 +8,7 @@ import { Button } from "@/shared/components/ui/button";
 import { Bell, Headset } from "lucide-react";
 import { UserInfo } from "@/shared/components/custom-ui/user-info/UserInfo";
 import { useAuth } from "@/features/auth/hooks/useAuth";
+import { Logout } from "../../auth/ui/Logout";
 
 export function Header() {
     const {user} = useAuth()
@@ -32,11 +33,14 @@ export function Header() {
                     <Bell className="size-5"/>
                 </Button>
                 
-                <UserInfo
-                    avatarUrl={"https://upload.wikimedia.org/wikipedia/commons/1/1f/Woman_1.jpg"}
-                    name={"Anonymous"}
-                    email={user?.email || ''}
-                />
+                <div className="flex items-center gap-4">
+                    <UserInfo
+                        avatarUrl={"https://upload.wikimedia.org/wikipedia/commons/1/1f/Woman_1.jpg"}
+                        name={"Anonymous"}
+                        email={user?.email || ''}
+                    />
+                    <Logout />
+                </div>
             </div>
         </header>
     )
