@@ -138,7 +138,7 @@ export function AuthForm({ type }: Props) {
                     alt="Salad"
                     width={200}
                     height={200}
-                    className="absolute -bottom-16 -left-16 -rotate-12"
+                    className="absolute -bottom-18 -left-22 -rotate-12"
                     draggable={false}
                 />
             </div>
