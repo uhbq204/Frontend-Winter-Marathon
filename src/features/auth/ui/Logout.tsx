@@ -3,7 +3,7 @@
 import { LogoutDocument } from "@/__generated__/graphql";
 import { PAGES } from "@/shared/config/page.config";
 import { useApolloClient, useMutation } from "@apollo/client/react";
-import { LogOut } from "lucide-react";
+import { LogOutIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export function Logout() {
@@ -26,7 +26,7 @@ export function Logout() {
     return (
         <div>
             <button onClick={handleLogout} disabled={loading}>
-                <LogOut className="size-5"/>
+                Logout
             </button>
         </div>
     )

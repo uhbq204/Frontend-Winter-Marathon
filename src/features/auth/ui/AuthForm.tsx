@@ -11,6 +11,8 @@ import { toast } from "react-hot-toast"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { PAGES } from "@/shared/config/page.config"
+import { useRef, useState } from "react"
+import { Turnstile, TurnstileInstance } from "@marsidev/react-turnstile"
 
 
 
@@ -30,6 +32,9 @@ export function AuthForm({ type }: Props) {
             password: ''
         }
     })
+
+    const ref = useRef<TurnstileInstance | null>(null)
+    const [captchaToken, setCaptchaToken] = useState<string | null>(null)
 
     const client = useApolloClient()
     const router = useRouter()
@@ -64,14 +69,30 @@ export function AuthForm({ type }: Props) {
                 toast.error(error.message, {
                     id: 'auth-error'
                 })
+                ref.current?.reset()
+                setCaptchaToken(null)
             }
         }
     )
 
     const handleAuth = (data: AuthInput) => {
+        if(!captchaToken) {
+            toast.error('Please complete the CAPTCHA challenge.', {
+                id: 'captcha-error'
+            })
+            ref.current?.reset()
+            setCaptchaToken(null)
+            return
+        }
+
         auth({
             variables: {
                 data
+            },
+            context: {
+                headers: {
+                    'cf-turnstile-token': captchaToken
+                }
             }
         })
     }
@@ -80,7 +101,7 @@ export function AuthForm({ type }: Props) {
         <div className="flex h-screen">
             <div className="m-auto w-sm rounded-lg bg-linear-to-tr from-[#8062ee] to-[#a088fc] p-10 text-white shadow-lg relative">
                 <h1 className="mb-5 text-center text-[2.3rem] font-bold">
-                    {isLogin ? 'Sign In' : 'Sign Up'}
+                    {isLogin ? 'Login' : 'Register'}
                 </h1>
 
                 <form className="space-y-3" onSubmit={handleSubmit(handleAuth)}>
@@ -122,12 +143,21 @@ export function AuthForm({ type }: Props) {
                         </p>
                     )}
 
+                    <div className="flex justify-center pt-2">
+                        <Turnstile
+                            ref={ref}
+                            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                            onSuccess={token => setCaptchaToken(token)}
+                            onExpire={() => setCaptchaToken(null)}
+                            options={{
+                                theme: 'light'
+                            }}
+                        />
+                    </div>
+
                     <div className="text-center">
-                        <Button
-                            type="submit"
-                            disabled={!isValid || loading}
-                        >
-                            {isLogin ? 'Sign In' : 'Sign Up'}
+                        <Button type="submit" disabled={loading}>
+                            {isLogin ? 'Login' : 'Register'}
                         </Button>
                     </div>
                 </form>
