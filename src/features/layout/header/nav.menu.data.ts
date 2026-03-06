@@ -1,6 +1,6 @@
 import type { IMenuItem } from "@/shared/components/custom-ui/nav-menu/nav-menu.types";
 import { PAGES } from "@/shared/config/page.config";
-import { BookMarked, CalendarDays, ChartColumn, House, Store, Users, Utensils } from "lucide-react";
+import { BookMarked, CalendarDays, ChartColumn, House, Settings, Store, Users, Utensils } from "lucide-react";
 
 export const navMenuItems: IMenuItem[] = [
     {
@@ -34,8 +34,8 @@ export const navMenuItems: IMenuItem[] = [
         href: PAGES.RECIPES
     },
     {
-        icon: Users,
-        label: "Forum",
-        href: PAGES.FORUM
+        icon: Settings,
+        label: "Profile",
+        href: PAGES.PROFILE
     }
 ]

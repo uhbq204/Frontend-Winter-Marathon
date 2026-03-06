@@ -1,7 +1,7 @@
 'use client'
 
 import { NavMenu } from "@/shared/components/custom-ui/nav-menu/NavMenu";
-import { navMenuItems } from "./nav.data";
+import { navMenuItems } from "./nav.menu.data";
 import Link from "next/link";
 import { PAGES } from "@/shared/config/page.config";
 import { Button } from "@/shared/components/ui/button";
@@ -48,22 +48,7 @@ export function Header() {
                             group-hover:opacity-100 group-hover:visible
                             transition-all duration-200 p-1
                         ">
-
-                            <button className="
-                                w-full text-left px-3 py-2
-                                rounded-3xl
-                                hover:bg-gray-200 transition
-                                text-sm text-gray-600
-                                flex items-center
-                            ">
-                                <UserCog className="size-4 mr-2"/>
-                                Settings
-                            </button>
-
-                            {/* Divider */}
-                            <div className="border-t mx-3"></div>
-
-                            <button className="
+                            <div className="
                                 w-full text-left px-3 py-2
                                 rounded-3xl
                                 hover:bg-gray-200 transition
@@ -72,7 +57,7 @@ export function Header() {
                             ">
                                 <LogOut className="size-4 mr-2"/>
                                 <Logout />
-                            </button>
+                            </div>
                         </div>
                     </div>
                 </div>
