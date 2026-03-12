@@ -113,6 +113,7 @@ export function AuthForm({ type }: Props) {
                                 message: 'Invalid email address'
                             }
                         })}
+                        className="bg-white/40"
                         type="email"
                         placeholder="Enter your email:"
                         aria-invalid={!!errors.email}
@@ -132,6 +133,7 @@ export function AuthForm({ type }: Props) {
                                 message: 'Password must be at least 6 characters'
                             }
                         })}
+                        className="bg-white/40"
                         type="password"
                         placeholder="Enter your password:"
                         aria-invalid={!!errors.password}

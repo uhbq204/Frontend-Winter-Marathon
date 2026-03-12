@@ -41,20 +41,8 @@ export function Header() {
                             email={user?.email || ''}
                         />
                     
-                        <div className="
-                            absolute right-0 top-full mt-2 w-full
-                            rounded-3xl border bg-white shadow-lg
-                            opacity-0 invisible
-                            group-hover:opacity-100 group-hover:visible
-                            transition-all duration-200 p-1
-                        ">
-                            <div className="
-                                w-full text-left px-3 py-2
-                                rounded-3xl
-                                hover:bg-gray-200 transition
-                                text-sm text-gray-600
-                                flex items-center
-                            ">
+                        <div className="absolute right-0 top-full mt-2 w-full rounded-3xl border bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-1">
+                            <div className="w-full text-left px-3 py-2 rounded-3xl not-first: hover:bg-gray-200 transition text-sm text-gray-600 flex items-center">
                                 <LogOut className="size-4 mr-2"/>
                                 <Logout />
                             </div>

@@ -1,11 +1,11 @@
 import { Header } from "@/features/layout/header/Header";
-import type { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 
 export default function Layout({ children}: PropsWithChildren<unknown>) {
     return (
-        <div>
+        <div className="px-5">
             <Header />
-            <div>{children}</div>
+            <div className="mt-6">{children}</div>
         </div>
     )
 }

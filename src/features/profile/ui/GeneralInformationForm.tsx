@@ -1,7 +1,9 @@
 import { UseFormReturn } from "react-hook-form";
 import { IProfileForm } from "../types/profile-update.types";
-import { Mail, User, UserCircle } from "lucide-react";
-import { Input } from "@/shared/components/ui/input";
+import { Mail, PenLine, User, UserCircle } from "lucide-react";
+import { InputLabel } from "@/shared/components/custom-ui/input-label/InputLabel";
+import { AvatarUpload } from "./AvatarUpload";
+
 
 export function GeneralInformationForm({
     form
@@ -15,48 +17,45 @@ export function GeneralInformationForm({
             <h2 className="mb-6 text-lg font-semibold">General Information</h2>
 
             <div className="space-y-4">
-                <div className="relative">
-                    <User
-                        size={16}
-                        className="absolute top-3 left-3 opacity-50"
+
+                <div className="flex items-center gap-4">
+                    <AvatarUpload onCange={
+                            url => form.setValue('avatarUrl', url, { shouldDirty: true })
+                        }
+                        value={form.watch('avatarUrl') || undefined}
                     />
-                    <Input
-                        className="pl-9"
+
+                    <InputLabel
+                        Icon={PenLine}
+                        label="Full name"
                         placeholder="Full name"
                         {...register("fullName")}
                     />
                 </div>
 
-                <div className="relative">
-                    <Mail
-                        size={16}
-                        className="absolute top-3 left-3 opacity-50"
-                    />
-                    <Input
-                        className="pl-9"
-                        placeholder="Email"
-                        {...register("email")}
-                    />
-                </div>
-
-                <div className="relative">
-                    <UserCircle
-                        size={16}
-                        className="absolute top-3 left-3 opacity-50"
-                    />
-                    <Input
-                        type="number"
-                        className="pl-9"
-                        placeholder="Age"
-                        {...register("age")}
-                    />
-                </div>
-
-                <textarea
-                    className="w-full rounded-md border bg-gray-200 p-3 font-mono"
-                    placeholder="Bio"
-                    {...register("bio")}
+                <InputLabel
+                    Icon={Mail}
+                    label="Email"
+                    placeholder="Email"
+                    {...register("email")}
                 />
+
+                <InputLabel
+                    Icon={UserCircle}
+                    label="Age"
+                    placeholder="Age"
+                    type="number"
+                    {...register("age")}
+                />
+
+                <label className="relative block">
+                    <span className="mb-1.5 block text-sm font-mono opacity-50">Bio</span>
+                    <textarea
+                        className="w-full rounded-md border p-3 font-mono focus-visible:border-ring focus-visible:ring-ring/80 focus-visible:ring-3"
+                        placeholder="Bio"
+                        {...register("bio")}
+                    />
+                </label>
             </div>
         </div>
     )
