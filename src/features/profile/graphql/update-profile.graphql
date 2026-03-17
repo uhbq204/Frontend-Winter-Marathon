@@ -1,7 +1,8 @@
-mutation UpdateProfile($input: UserUpdateCustomInput!) {
-    updateProfile(input: $input) {
+mutation UpdateProfile($data: UserUpdateCustomInput!) {
+    updateProfile(data: $data) {
         id
         email
+        avatarUrl
         profile {
             fullName
             gender

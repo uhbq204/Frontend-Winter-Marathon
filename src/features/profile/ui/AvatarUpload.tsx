@@ -7,10 +7,10 @@ import { useState } from "react"
 
 interface Props {
     value?: string
-    onCange: (url: string) => void
+    onChange: (url: string) => void
 }
 
-export function AvatarUpload({ value, onCange }: Props) {
+export function AvatarUpload({ value, onChange }: Props) {
     const [loading, setLoading] = useState(false)
 
     async function upload(file: File) {
@@ -27,7 +27,7 @@ export function AvatarUpload({ value, onCange }: Props) {
 
         const data = await res.json()
 
-        onCange(data.url)
+        onChange(data.url)
 
         setLoading(false)
     }
@@ -35,7 +35,7 @@ export function AvatarUpload({ value, onCange }: Props) {
     return (
         <div className="flex items-center gap-3">
             <Image
-                src={value || '/images/avatar-placeholder.png'}
+                src={value || '/default-avatar.png'}
                 alt="avatar"
                 width={48}
                 height={48}

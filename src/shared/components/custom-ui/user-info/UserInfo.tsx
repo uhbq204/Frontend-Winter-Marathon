@@ -1,7 +1,7 @@
 import Image from "next/image"
 
 interface Props {
-    avatarUrl: string
+    avatarUrl?: string
     name: string
     email: string
 }
@@ -10,7 +10,7 @@ export function UserInfo({ avatarUrl, name, email }: Props) {
     return (
         <div className="flex items-center gap-2 bg-white py-1.5 pl-2 pr-4 rounded-full hover:bg-gray-300 transition cursor-pointer">
             <Image
-                src={avatarUrl}
+                src={ avatarUrl || '/default-avatar.png' }
                 alt={name}
                 width={45}
                 height={45}

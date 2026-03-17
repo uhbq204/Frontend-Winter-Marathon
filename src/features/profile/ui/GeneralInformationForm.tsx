@@ -1,14 +1,14 @@
 import { UseFormReturn } from "react-hook-form";
-import { IProfileForm } from "../types/profile-update.types";
-import { Mail, PenLine, User, UserCircle } from "lucide-react";
+import { Mail, PenLine, UserCircle } from "lucide-react";
 import { InputLabel } from "@/shared/components/custom-ui/input-label/InputLabel";
 import { AvatarUpload } from "./AvatarUpload";
+import { TProfileForm } from "../types/profile-update.types";
 
 
 export function GeneralInformationForm({
     form
 }: {
-    form: UseFormReturn<IProfileForm, unknown, IProfileForm>
+    form: UseFormReturn<TProfileForm, unknown, TProfileForm>
 }) {
     const { register } = form
 
@@ -19,7 +19,7 @@ export function GeneralInformationForm({
             <div className="space-y-4">
 
                 <div className="flex items-center gap-4">
-                    <AvatarUpload onCange={
+                    <AvatarUpload onChange={
                             url => form.setValue('avatarUrl', url, { shouldDirty: true })
                         }
                         value={form.watch('avatarUrl') || undefined}
@@ -29,7 +29,7 @@ export function GeneralInformationForm({
                         Icon={PenLine}
                         label="Full name"
                         placeholder="Full name"
-                        {...register("fullName")}
+                        {...register("profile.fullName")}
                     />
                 </div>
 
@@ -45,7 +45,7 @@ export function GeneralInformationForm({
                     label="Age"
                     placeholder="Age"
                     type="number"
-                    {...register("age")}
+                    {...register("profile.age")}
                 />
 
                 <label className="relative block">
@@ -53,7 +53,7 @@ export function GeneralInformationForm({
                     <textarea
                         className="w-full rounded-md border p-3 font-mono focus-visible:border-ring focus-visible:ring-ring/80 focus-visible:ring-3"
                         placeholder="Bio"
-                        {...register("bio")}
+                        {...register("profile.bio")}
                     />
                 </label>
             </div>

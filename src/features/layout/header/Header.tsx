@@ -36,8 +36,8 @@ export function Header() {
                 <div className="relative group inline-block">
                     <div className="flex items-center gap-4 cursor-pointer">
                         <UserInfo
-                            avatarUrl={"https://upload.wikimedia.org/wikipedia/commons/1/1f/Woman_1.jpg"}
-                            name={"Anonymous"}
+                            avatarUrl={user?.avatarUrl || ''}
+                            name={user?.profile?.fullName || "Anonymous"}
                             email={user?.email || ''}
                         />
                     
