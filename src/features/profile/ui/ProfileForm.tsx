@@ -10,7 +10,6 @@ import { BodyMeasurementsForm } from "./BodyMeasurements";
 import { useForm } from "react-hook-form";
 import { HeadingWithIcon } from "@/shared/components/custom-ui/heading-with-icon/HeadingWithIcon";
 import { User } from "lucide-react";
-import { useEffect } from "react";
 import { TProfileForm } from "../types/profile-update.types";
 
 
@@ -38,9 +37,23 @@ export function ProfileForm({ data }: { data: GetProfileQuery }) {
     )
 
     const submit = form.handleSubmit(data => {
+        const cleanedData = {
+            ...data,
+            profile: data.profile
+                ? Object.fromEntries(
+                    Object.entries(data.profile).filter(([key]) => key !== '__typename')
+                )
+            : {},
+            measurements: data.measurements
+                ? Object.fromEntries(
+                    Object.entries(data.measurements).filter(([key]) => key !== '__typename')
+                )
+            : {}
+        }
+
         updateProfile({
             variables: {
-                data
+                data: cleanedData
             }
         })
     })
@@ -63,6 +76,7 @@ export function ProfileForm({ data }: { data: GetProfileQuery }) {
                         </Button>
 
                         <Button
+                            type="submit"
                             variant="outline"
                             disabled={loading}
                         >

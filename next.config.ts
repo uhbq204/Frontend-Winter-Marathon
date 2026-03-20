@@ -3,15 +3,16 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
-  images: {
-    remotePatterns: [
+  async rewrites() {
+    return [
       {
-        protocol: 'http',
-        hostname: "localhost",
-        port: '3200',
-        pathname: '/**',
+        source: '/uploads/:path*',
+        destination: 'http://localhost:3200/uploads/:path*'
       }
     ]
+  },
+  images: {
+    remotePatterns: []
   }
 }
 

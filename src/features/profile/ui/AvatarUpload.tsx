@@ -35,7 +35,7 @@ export function AvatarUpload({ value, onChange }: Props) {
     return (
         <div className="flex items-center gap-3">
             <Image
-                src={value || '/default-avatar.png'}
+                src={value || '/images/default-avatar.png'}
                 alt="avatar"
                 width={48}
                 height={48}

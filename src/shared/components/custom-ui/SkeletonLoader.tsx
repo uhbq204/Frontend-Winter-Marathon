@@ -15,7 +15,7 @@ export function SkeletonLoader({
     return (
         <>
             {Array.from({ length: count }, (_, index) => (
-                <div key={index} className={twMerge("mb-[0.65rem] h-10 animate-pulse rounded-3xl border bg-gray-600 last:mb-0", className)} style={style} />
+                <div key={index} className={twMerge("mb-[0.65rem] h-10 animate-pulse rounded-3xl border bg-gray-300 last:mb-0", className)} style={style} />
             ))}
         </>
     )
