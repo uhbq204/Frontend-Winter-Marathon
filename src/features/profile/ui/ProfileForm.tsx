@@ -59,7 +59,7 @@ export function ProfileForm({ data }: { data: GetProfileQuery }) {
     })
 
     return (
-        <div>
+        <div className="rounded-xl bg-white p-6">
             <form
                 onSubmit={submit}
                 className="space-y-6"
@@ -85,7 +85,7 @@ export function ProfileForm({ data }: { data: GetProfileQuery }) {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-8">
+                <div className="grid grid-cols-2 gap-8 rounded-xl">
                     <GeneralInformationForm form={form} />
                     <BodyMeasurementsForm form={form} />
                 </div>

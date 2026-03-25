@@ -15,7 +15,7 @@ export function GeneralInformationForm({
     const { register } = form
 
     return (
-        <div className="rounded-xl border bg-white p-6">
+        <div className="rounded-xl border p-6">
             <h2 className="mb-6 text-lg font-semibold">General Information</h2>
 
             <div className="space-y-4">

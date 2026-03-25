@@ -33,12 +33,12 @@ export function AvatarUpload({ value, onChange }: Props) {
     }
 
     return (
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 relative">
             <Image
                 src={value || '/images/default-avatar.png'}
                 alt="avatar"
-                width={48}
-                height={48}
+                width={64}
+                height={64}
                 className="rounded-full object-cover"
             />
 
@@ -58,6 +58,7 @@ export function AvatarUpload({ value, onChange }: Props) {
                     size="sm"
                     asChild
                     disabled={loading}
+                    className="absolute right-0 bottom-[-9] rounded-full"
                 >
                     <span>
                         <Edit className={loading ? 'animate-spin' : ''} />
