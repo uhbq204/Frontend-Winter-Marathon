@@ -6,11 +6,11 @@ import { LabelIcon } from "./LabelIcon";
 
 
 interface Props extends ComponentProps<'input'> {
-    label: string
+    label?: string
     Icon: LucideIcon
 }
 
-export function InputLabel({ label, Icon, className, type, ...props }: Props) {
+export function InputLabel({ label, Icon, className, ...props }: Props) {
     return (
         <label className="relative block">
             <LabelIcon label={label} Icon={Icon} />
