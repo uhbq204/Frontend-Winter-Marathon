@@ -14,7 +14,7 @@ export function InputLabel({ label, Icon, className, ...props }: Props) {
     return (
         <label className="relative block">
             <LabelIcon label={label} Icon={Icon} />
-            <Input className={cn(className, 'rounded-3xl bg-gray-100 pl-9')} {...props} />
+            <Input className={cn('rounded-3xl bg-gray-100 pl-9', className)} {...props} />
         </label>
     )
 }
