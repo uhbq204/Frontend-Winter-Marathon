@@ -8,7 +8,7 @@ interface Props {
 export function HeadingWithIcon({ Icon, children }: Props) {
     return (
         <div className="flex items-center">
-            <Icon className="mr-1.5 opacity-45" />
+            <Icon className="mr-1.5 opacity-50" />
             <h1 className="text-xl font-semibold">{children}</h1>
         </div>
     )
