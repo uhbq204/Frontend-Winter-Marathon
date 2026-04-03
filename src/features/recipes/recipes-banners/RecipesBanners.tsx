@@ -6,28 +6,28 @@ import Image from "next/image";
 export function RecipesBanners() {
     return (
         <div className="mb-5 grid grid-cols-[2.5fr_1fr] gap-5">
-            <div className="from-primary-dark to-primary relative rounded-3xl bg-linear-to-r px-8 py-4 text-white">
-                <div className="absolute -bottom-1 -left-6">
+            <div className="from-primary-dark to-primary relative rounded-3xl bg-linear-to-r px-4 py-4 text-white">
+                <div className="absolute -bottom-2 -left-4.5">
                     <Image
                         src="/emotions/burger.png"
                         alt="Burger"
                         width={170}
                         height={140}
-                        className="h-auto w-[170px]"
+                        className="h-auto w-35 object-contain"
                         draggable={false}
                         priority
                     />
                 </div>
 
-                <div className="ml-[130px] flex items-start justify-between gap-6">
+                <div className="flex items-start gap-6 absolute top-4 bottom-4 right-4">
                     <div className="min-w-0">
-                        <h2 className="text-4xl leading-none font-black tracking-[-0.02em] italic">Got a Recipe That Rocks?</h2>
+                        <h2 className="text-3xl leading-none font-black italic">Got a Recipe That Rocks?</h2>
 
-                        <p className="mt-2 text-sm text-white/80">
+                        <p className="mt-1 text-sm text-white/80">
                             Share It &amp; Shine! Your recipe might just become the next big hit!
                         </p>
 
-                        <div className="mt-4 flex flex-wrap gap-2">
+                        <div className="mt-2 flex flex-wrap gap-2">
                             {[
                                 'Gain Recognition',
                                 'Inspire Others',
