@@ -82,9 +82,9 @@ export const recipeCardFooterVariants = cva('inline-flex items-center gap-1.5 fo
 export const recipeCardDifficultyBadgeVariants = cva('flex items-center gap-1.5 font-semibold rounded-xl px-2.5 py-1', {
     variants: {
         tone: {
-            easy: 'bg-green-300 text-green-700',
-            medium: 'bg-yellow-300 text-yellow-700',
-            hard: 'bg-red-300 text-red-700'
+            EASY: 'bg-green-300 text-green-700',
+            MEDIUM: 'bg-yellow-300 text-yellow-700',
+            HARD: 'bg-red-300 text-red-700'
         },
         size: {
             default: 'text-sm',
@@ -92,7 +92,7 @@ export const recipeCardDifficultyBadgeVariants = cva('flex items-center gap-1.5 
         }
     },
     defaultVariants: {
-        tone: 'easy',
+        tone: 'EASY',
         size: 'default'
     }
 })
