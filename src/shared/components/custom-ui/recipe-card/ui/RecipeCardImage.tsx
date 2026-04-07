@@ -1,29 +1,32 @@
 import Image from "next/image"
 import { recipeCardImageVariants } from "../styles/recipe-card.styles"
 import { TRecipeCardSize } from "../types/recipe-card.types"
+import Link from "next/link"
+import { PAGES } from "@/shared/config/page.config"
 
 
 
 interface Props {
-    image: string
-    name: string
-    size: TRecipeCardSize
+  image: string
+  title: string
+  slug: string
+  size: TRecipeCardSize
 }
 
-export function RecipeCardImage({ image, name, size }: Props) {
-    return (
-        <div className={recipeCardImageVariants({ size })}>
-            <Image
-                src={image}
-                alt={name}
-                fill
-                className="object-cover transition-transform duration-200 will-change-transform group-hover:scale-[1.03]"
-                sizes={
-                    size === 'sm'
-                        ? '(max-width: 768px) 100vw, 200px'
-                        : '(max-width: 1024px) 100vw, 400px'
-                }
-            />
-        </div>
-    )
+export function RecipeCardImage({ image, title, slug, size }: Props) {
+  return (
+    <Link
+      href={PAGES.RECIPE_DETAIL(slug)}
+      className="relative w-full overflow-hidden rounded-2xl"
+    >
+      <Image
+        src={image}
+        alt={title}
+        className="object-cover transition-transform duration-200 will-change-transform group-hover:scale-[1.03]"
+        width={size === 'sm' ? 240 : 300}
+        height={size === 'sm' ? 140 : 160}
+        draggable={false}
+      />
+    </Link>
+  )
 }

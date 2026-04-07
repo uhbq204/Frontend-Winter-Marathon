@@ -1,6 +1,13 @@
 import { GetRecipesQuery } from "@/__generated__/graphql";
-import { recipeCardVariants } from "./styles/recipe-card.styles";
+import { recipeCardDescriptionVariants, recipeCardTitleVariants, recipeCardVariants } from "./styles/recipe-card.styles";
 import { TRecipeCardSize } from "./types/recipe-card.types";
+import { RecipeCardImage } from "./ui/RecipeCardImage";
+import Link from "next/link";
+import { PAGES } from "@/shared/config/page.config";
+import { cn } from "@/shared/utils";
+import { EllipsisVertical } from "lucide-react";
+import { RecipeCardMetaBadges } from "./ui/badges/RecipeCardMetaBadges";
+import { RecipeCardFooter } from "./ui/RecipeCardFooter";
 
 
 
@@ -10,7 +17,50 @@ interface Props {
 }
 
 export function RecipeCard({ recipe, size }: Props) {
-    return <div className={recipeCardVariants({ size })}>
-        RecipeCard
+  return (
+    <div className={recipeCardVariants({ size })}>
+      <RecipeCardImage
+        // TODO: add image to recipe and pass it here
+        image={'/images/test-recipe-image.png'}
+        title={recipe.title}
+        size={size}
+        slug={recipe.slug}
+      />
+
+      <div className="mt-4 flex items-start justify-between gap-3">
+        <Link
+          href={PAGES.RECIPE_DETAIL(recipe.slug)}
+          className={cn(`min-w-0 flex-1 ${recipeCardTitleVariants({ size })}`)}
+        >
+          <h3>{recipe.title}</h3>
+        </Link>
+
+        <button
+          type="button"
+          className="shrink-0 text-black/40"
+          aria-label="More actions"
+          onClick={e => e.preventDefault()}
+        >
+          <EllipsisVertical className={size === 'sm' ? 'size-4' : 'size-5'} />
+        </button>
+      </div>
+
+      <p className={recipeCardDescriptionVariants({ size })}>
+        {recipe.description}
+      </p>
+
+      <RecipeCardMetaBadges
+        recipe={recipe}
+        size={size}
+      />
+
+      <RecipeCardFooter
+        difficultyLevels={recipe.difficulty}
+        likes={recipe.likes}
+        // TODO: add views to recipe and pass it here
+        views={156100}
+        size={size}
+      />
     </div>
+  )
 }

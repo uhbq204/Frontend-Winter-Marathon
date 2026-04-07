@@ -87,10 +87,6 @@ export const recipeSidebarMenuData: ISidebarMenuAccordionItem[] = [
                 value: "russian"
             },
             {
-                label: "American",
-                value: "american"
-            },
-            {
                 label: "Italian",
                 value: "italian"
             },
@@ -105,6 +101,10 @@ export const recipeSidebarMenuData: ISidebarMenuAccordionItem[] = [
             {
                 label: "Indian",
                 value: "indian"
+            },
+            {
+                label: "French",
+                value: "french"
             }
         ]
     },

@@ -5,9 +5,6 @@ mutation Register($data: AuthInput!) {
             email
             role
             avatarUrl
-            profile {
-                fullName
-            }
         }
     }
 }

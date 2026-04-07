@@ -1,5 +1,6 @@
-query GetRecipes($input: RecipeQueryInput!) {
+query GetRecipes($input: RecipesQueryInput!) {
     recipes(input: $input) {
+        image
         title
         description
         slug
@@ -7,5 +8,7 @@ query GetRecipes($input: RecipeQueryInput!) {
         cookingTime
         difficulty
         likes
+        views
+        mealType
     }
 }

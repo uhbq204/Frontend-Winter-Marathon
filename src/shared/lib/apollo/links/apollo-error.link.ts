@@ -3,6 +3,8 @@ import { simpleApolloClient } from "../apollo.client";
 import { GetNewTokensDocument } from "@/__generated__/graphql";
 import { CombinedGraphQLErrors, Observable } from "@apollo/client";
 
+
+
 export const errorLink = new ErrorLink(
     ({ error, operation, forward }) => {
         if (!CombinedGraphQLErrors.is(error)) return

@@ -7,8 +7,8 @@ import { TRecipeCardSize } from "../types/recipe-card.types"
 
 
 interface Props {
-    views?: number
-    likes?: number
+    views?: number | null
+    likes?: number | null
     difficultyLevels?: Difficulty
     size: TRecipeCardSize
 }

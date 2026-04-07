@@ -15,29 +15,29 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 type Documents = {
     "query GetNewTokens {\n  newTokens {\n    user {\n      id\n    }\n  }\n}": typeof types.GetNewTokensDocument,
-    "mutation Login($data: AuthInput!) {\n  login(data: $data) {\n    user {\n      id\n      email\n      role\n      avatarUrl\n      profile {\n        fullName\n      }\n    }\n  }\n}": typeof types.LoginDocument,
+    "mutation Login($data: AuthInput!) {\n  login(data: $data) {\n    user {\n      id\n      email\n      role\n      avatarUrl\n    }\n  }\n}": typeof types.LoginDocument,
     "mutation Logout {\n  logout\n}": typeof types.LogoutDocument,
-    "query Me {\n  me {\n    id\n    email\n    role\n    avatarUrl\n    profile {\n      fullName\n    }\n  }\n}": typeof types.MeDocument,
-    "mutation Register($data: AuthInput!) {\n  register(data: $data) {\n    user {\n      id\n      email\n      role\n      avatarUrl\n      profile {\n        fullName\n      }\n    }\n  }\n}": typeof types.RegisterDocument,
+    "query Me {\n  me {\n    id\n    email\n    role\n    avatarUrl\n  }\n}": typeof types.MeDocument,
+    "mutation Register($data: AuthInput!) {\n  register(data: $data) {\n    user {\n      id\n      email\n      role\n      avatarUrl\n    }\n  }\n}": typeof types.RegisterDocument,
     "mutation RequestPasswordReset($data: RequestPasswordResetInput!) {\n  requestPasswordReset(data: $data)\n}": typeof types.RequestPasswordResetDocument,
     "mutation ResetPassword($data: ResetPasswordInput!) {\n  resetPassword(data: $data)\n}": typeof types.ResetPasswordDocument,
     "mutation VerifyEmail($token: String!) {\n  verifyEmail(token: $token)\n}": typeof types.VerifyEmailDocument,
     "query GetProfile {\n  me {\n    id\n    email\n    avatarUrl\n    profile {\n      fullName\n      gender\n      age\n      bio\n    }\n    measurements {\n      heightCm\n      weightKg\n      goalWeightKg\n      chestCm\n      waistCm\n      thighCm\n      armCm\n      activityLevel\n      nutritionGoal\n    }\n  }\n}": typeof types.GetProfileDocument,
     "mutation UpdateProfile($data: UserUpdateCustomInput!) {\n  updateProfile(data: $data) {\n    id\n    email\n    avatarUrl\n    profile {\n      fullName\n      gender\n      age\n      bio\n    }\n    measurements {\n      heightCm\n      weightKg\n      goalWeightKg\n      chestCm\n      waistCm\n      thighCm\n      armCm\n      activityLevel\n      nutritionGoal\n    }\n  }\n}": typeof types.UpdateProfileDocument,
-    "query GetRecipes($input: RecipeQueryInput!) {\n  recipes(input: $input) {\n    title\n    description\n    slug\n    calories\n    cookingTime\n    difficulty\n    likes\n  }\n}": typeof types.GetRecipesDocument,
+    "query GetRecipes($input: RecipesQueryInput!) {\n  recipes(input: $input) {\n    image\n    title\n    description\n    slug\n    calories\n    cookingTime\n    difficulty\n    likes\n    views\n    mealType\n  }\n}": typeof types.GetRecipesDocument,
 };
 const documents: Documents = {
     "query GetNewTokens {\n  newTokens {\n    user {\n      id\n    }\n  }\n}": types.GetNewTokensDocument,
-    "mutation Login($data: AuthInput!) {\n  login(data: $data) {\n    user {\n      id\n      email\n      role\n      avatarUrl\n      profile {\n        fullName\n      }\n    }\n  }\n}": types.LoginDocument,
+    "mutation Login($data: AuthInput!) {\n  login(data: $data) {\n    user {\n      id\n      email\n      role\n      avatarUrl\n    }\n  }\n}": types.LoginDocument,
     "mutation Logout {\n  logout\n}": types.LogoutDocument,
-    "query Me {\n  me {\n    id\n    email\n    role\n    avatarUrl\n    profile {\n      fullName\n    }\n  }\n}": types.MeDocument,
-    "mutation Register($data: AuthInput!) {\n  register(data: $data) {\n    user {\n      id\n      email\n      role\n      avatarUrl\n      profile {\n        fullName\n      }\n    }\n  }\n}": types.RegisterDocument,
+    "query Me {\n  me {\n    id\n    email\n    role\n    avatarUrl\n  }\n}": types.MeDocument,
+    "mutation Register($data: AuthInput!) {\n  register(data: $data) {\n    user {\n      id\n      email\n      role\n      avatarUrl\n    }\n  }\n}": types.RegisterDocument,
     "mutation RequestPasswordReset($data: RequestPasswordResetInput!) {\n  requestPasswordReset(data: $data)\n}": types.RequestPasswordResetDocument,
     "mutation ResetPassword($data: ResetPasswordInput!) {\n  resetPassword(data: $data)\n}": types.ResetPasswordDocument,
     "mutation VerifyEmail($token: String!) {\n  verifyEmail(token: $token)\n}": types.VerifyEmailDocument,
     "query GetProfile {\n  me {\n    id\n    email\n    avatarUrl\n    profile {\n      fullName\n      gender\n      age\n      bio\n    }\n    measurements {\n      heightCm\n      weightKg\n      goalWeightKg\n      chestCm\n      waistCm\n      thighCm\n      armCm\n      activityLevel\n      nutritionGoal\n    }\n  }\n}": types.GetProfileDocument,
     "mutation UpdateProfile($data: UserUpdateCustomInput!) {\n  updateProfile(data: $data) {\n    id\n    email\n    avatarUrl\n    profile {\n      fullName\n      gender\n      age\n      bio\n    }\n    measurements {\n      heightCm\n      weightKg\n      goalWeightKg\n      chestCm\n      waistCm\n      thighCm\n      armCm\n      activityLevel\n      nutritionGoal\n    }\n  }\n}": types.UpdateProfileDocument,
-    "query GetRecipes($input: RecipeQueryInput!) {\n  recipes(input: $input) {\n    title\n    description\n    slug\n    calories\n    cookingTime\n    difficulty\n    likes\n  }\n}": types.GetRecipesDocument,
+    "query GetRecipes($input: RecipesQueryInput!) {\n  recipes(input: $input) {\n    image\n    title\n    description\n    slug\n    calories\n    cookingTime\n    difficulty\n    likes\n    views\n    mealType\n  }\n}": types.GetRecipesDocument,
 };
 
 /**
@@ -61,7 +61,7 @@ export function graphql(source: "query GetNewTokens {\n  newTokens {\n    user {
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "mutation Login($data: AuthInput!) {\n  login(data: $data) {\n    user {\n      id\n      email\n      role\n      avatarUrl\n      profile {\n        fullName\n      }\n    }\n  }\n}"): (typeof documents)["mutation Login($data: AuthInput!) {\n  login(data: $data) {\n    user {\n      id\n      email\n      role\n      avatarUrl\n      profile {\n        fullName\n      }\n    }\n  }\n}"];
+export function graphql(source: "mutation Login($data: AuthInput!) {\n  login(data: $data) {\n    user {\n      id\n      email\n      role\n      avatarUrl\n    }\n  }\n}"): (typeof documents)["mutation Login($data: AuthInput!) {\n  login(data: $data) {\n    user {\n      id\n      email\n      role\n      avatarUrl\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -69,11 +69,11 @@ export function graphql(source: "mutation Logout {\n  logout\n}"): (typeof docum
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query Me {\n  me {\n    id\n    email\n    role\n    avatarUrl\n    profile {\n      fullName\n    }\n  }\n}"): (typeof documents)["query Me {\n  me {\n    id\n    email\n    role\n    avatarUrl\n    profile {\n      fullName\n    }\n  }\n}"];
+export function graphql(source: "query Me {\n  me {\n    id\n    email\n    role\n    avatarUrl\n  }\n}"): (typeof documents)["query Me {\n  me {\n    id\n    email\n    role\n    avatarUrl\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "mutation Register($data: AuthInput!) {\n  register(data: $data) {\n    user {\n      id\n      email\n      role\n      avatarUrl\n      profile {\n        fullName\n      }\n    }\n  }\n}"): (typeof documents)["mutation Register($data: AuthInput!) {\n  register(data: $data) {\n    user {\n      id\n      email\n      role\n      avatarUrl\n      profile {\n        fullName\n      }\n    }\n  }\n}"];
+export function graphql(source: "mutation Register($data: AuthInput!) {\n  register(data: $data) {\n    user {\n      id\n      email\n      role\n      avatarUrl\n    }\n  }\n}"): (typeof documents)["mutation Register($data: AuthInput!) {\n  register(data: $data) {\n    user {\n      id\n      email\n      role\n      avatarUrl\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -97,7 +97,7 @@ export function graphql(source: "mutation UpdateProfile($data: UserUpdateCustomI
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query GetRecipes($input: RecipeQueryInput!) {\n  recipes(input: $input) {\n    title\n    description\n    slug\n    calories\n    cookingTime\n    difficulty\n    likes\n  }\n}"): (typeof documents)["query GetRecipes($input: RecipeQueryInput!) {\n  recipes(input: $input) {\n    title\n    description\n    slug\n    calories\n    cookingTime\n    difficulty\n    likes\n  }\n}"];
+export function graphql(source: "query GetRecipes($input: RecipesQueryInput!) {\n  recipes(input: $input) {\n    image\n    title\n    description\n    slug\n    calories\n    cookingTime\n    difficulty\n    likes\n    views\n    mealType\n  }\n}"): (typeof documents)["query GetRecipes($input: RecipesQueryInput!) {\n  recipes(input: $input) {\n    image\n    title\n    description\n    slug\n    calories\n    cookingTime\n    difficulty\n    likes\n    views\n    mealType\n  }\n}"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
