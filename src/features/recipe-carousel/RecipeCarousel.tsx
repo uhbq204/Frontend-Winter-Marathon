@@ -17,7 +17,8 @@ interface Props {
 export function RecipeCarousel({ Icon, title, size, recipes }: Props) {
   return (
     <div className="mb-6">
-      <HeadingWithIcon 
+      <HeadingWithIcon
+        className="mb-4" 
         Icon={Icon}
       >
         {title}

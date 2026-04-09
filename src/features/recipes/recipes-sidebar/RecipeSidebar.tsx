@@ -18,7 +18,7 @@ export function RecipeSidebar({ filter, setSearchTerm, setFilter, debouncedSearc
     }
     
     return (
-        <div className="w-full max-w-60 space-y-6 bg-white p-4 rounded-3xl">
+        <div className="w-full space-y-6 bg-white p-4 rounded-3xl">
             <InputLabel
                 Icon={Search}
                 placeholder="Search by recipes"

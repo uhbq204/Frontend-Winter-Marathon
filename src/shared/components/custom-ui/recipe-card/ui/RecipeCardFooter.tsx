@@ -14,24 +14,34 @@ interface Props {
 }
 
 export function RecipeCardFooter({ views, likes, difficultyLevels, size }: Props) {
+    const hatCount = difficultyLevels === Difficulty.EASY ? 1 : difficultyLevels === Difficulty.MEDIUM ? 2 : 3
+
     return (
-        <div className="mt-4 flex items-center justify-between gap-3">
+        <div className="mt-2.5 flex items-center justify-between gap-3">
             <div className={recipeCardDifficultyBadgeVariants({
-                tone: difficultyLevels,
-                size
-            })}>
-                <ChefHat className={size === 'sm' ? 'size-3.5' : 'size-4'} />
+                    tone: difficultyLevels,
+                    size
+                })}
+            >
+                <span className="flex gap-0.5">
+                    {[...Array(hatCount)].map((_, index) => (
+                        <ChefHat
+                            key={index}
+                            className={size === 'sm' ? 'size-3' : 'size-4'}
+                        />
+                    ))}
+                </span>
                 <span className="capitalize">{difficultyLevels}</span>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
                 <span className={recipeCardFooterVariants({ size })}>
-                    <Heart className={size === 'sm' ? 'size-3.5' : 'size-4'} />
+                    <Heart className={size === 'sm' ? 'size-3' : 'size-4'} />
                     {formatCompactNumber(likes)}
                 </span>
 
                 <span className={recipeCardFooterVariants({ size })}>
-                    <Eye className={size === 'sm' ? 'size-3.5' : 'size-4'} />
+                    <Eye className={size === 'sm' ? 'size-3' : 'size-4'} />
                     {formatCompactNumber(views)}
                 </span>
             </div>
