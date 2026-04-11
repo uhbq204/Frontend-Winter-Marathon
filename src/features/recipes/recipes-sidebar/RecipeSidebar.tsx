@@ -5,16 +5,16 @@ import { recipeSidebarMenuData } from "./recipe-sidebar-menu-data";
 
 
 interface Props {
-    filter: string
+    filters: string[]
     debouncedSearchTerm: string
     setSearchTerm: (term: string) => void
-    setFilter: (filter: string) => void
+    setFilters: (filters: string[]) => void
 }
 
-export function RecipeSidebar({ filter, setSearchTerm, setFilter, debouncedSearchTerm }: Props) {
+export function RecipeSidebar({ filters, setSearchTerm, setFilters, debouncedSearchTerm }: Props) {
 
     const setActiveFilter = (filter: string) => {
-        setFilter(filter)
+        setFilters([filter])
     }
     
     return (
@@ -29,7 +29,7 @@ export function RecipeSidebar({ filter, setSearchTerm, setFilter, debouncedSearc
 
             <SidebarMenuAccordion
                 data={recipeSidebarMenuData}
-                activeValue={filter}
+                activeValue={filters[0]}
                 onValueChange={setActiveFilter}
             />
         </div>

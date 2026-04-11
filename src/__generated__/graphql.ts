@@ -106,9 +106,7 @@ export enum DietaryPreference {
 export enum Difficulty {
   Easy = 'EASY',
   Hard = 'HARD',
-  Medium = 'MEDIUM',
-  EASY = "EASY",
-  MEDIUM = "MEDIUM"
+  Medium = 'MEDIUM'
 }
 
 export enum Gender {
@@ -416,6 +414,13 @@ export type RecipeModel = {
   views: Scalars['Int']['output'];
 };
 
+/** Sorting options for recipes */
+export enum RecipeSort {
+  New = 'NEW',
+  Popular = 'POPULAR',
+  Recommended = 'RECOMMENDED'
+}
+
 export type RecipeStepInput = {
   description: Scalars['String']['input'];
   order: Scalars['Int']['input'];
@@ -450,7 +455,7 @@ export type RecipesQueryInput = {
   mealType?: InputMaybe<MealType>;
   page?: Scalars['Int']['input'];
   searchTerm?: InputMaybe<Scalars['String']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<RecipeSort>;
   specialOccasion?: InputMaybe<SpecialOccasion>;
 };
 
