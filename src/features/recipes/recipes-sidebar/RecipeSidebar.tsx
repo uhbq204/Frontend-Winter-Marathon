@@ -2,19 +2,20 @@ import { SidebarMenuAccordion } from "@/shared/components/custom-ui/sidebar-menu
 import { InputLabel } from "@/shared/components/custom-ui/with-label/InputLabel";
 import { Search } from "lucide-react";
 import { recipeSidebarMenuData } from "./recipe-sidebar-menu-data";
+import { TRecipeFilters } from "./recipe-sidebar-menu.types";
 
 
 interface Props {
-    filters: string[]
+    filters: TRecipeFilters
     debouncedSearchTerm: string
     setSearchTerm: (term: string) => void
-    setFilters: (filters: string[]) => void
+    setFilters: (filters: Partial<TRecipeFilters>) => void
 }
 
 export function RecipeSidebar({ filters, setSearchTerm, setFilters, debouncedSearchTerm }: Props) {
 
-    const setActiveFilter = (filter: string) => {
-        setFilters([filter])
+    const setActiveFilter = (key: keyof TRecipeFilters, value: string) => {
+        setFilters({ [key]: value })
     }
     
     return (
@@ -29,7 +30,7 @@ export function RecipeSidebar({ filters, setSearchTerm, setFilters, debouncedSea
 
             <SidebarMenuAccordion
                 data={recipeSidebarMenuData}
-                activeValue={filters[0]}
+                values={filters}
                 onValueChange={setActiveFilter}
             />
         </div>

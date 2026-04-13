@@ -14,7 +14,7 @@ interface Props {
 }
 
 export function RecipeCardFooter({ views, likes, difficultyLevels, size }: Props) {
-    const hatCount = difficultyLevels === Difficulty.EASY ? 1 : difficultyLevels === Difficulty.MEDIUM ? 2 : 3
+    const hatCount = difficultyLevels === Difficulty.Easy ? 1 : difficultyLevels === Difficulty.Medium ? 2 : 3
 
     return (
         <div className="mt-2.5 flex items-center justify-between gap-3">

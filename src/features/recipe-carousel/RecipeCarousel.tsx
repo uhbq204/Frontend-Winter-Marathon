@@ -3,6 +3,7 @@ import { HeadingWithIcon } from "@/shared/components/custom-ui/heading-with-icon
 import { RecipeCard } from "@/shared/components/custom-ui/recipe-card/RecipeCard";
 import { TRecipeCardSize } from "@/shared/components/custom-ui/recipe-card/types/recipe-card.types";
 import { Carousel, CarouselContent, CarouselItem } from "@/shared/components/ui/carousel";
+import { cn } from "@/shared/utils";
 import { LucideIcon } from "lucide-react";
 
 
@@ -25,11 +26,15 @@ export function RecipeCarousel({ Icon, title, size, recipes }: Props) {
       </HeadingWithIcon>
 
       <Carousel>
-        <CarouselContent>
+        <CarouselContent className="px-3 py-2">
           {recipes.map(recipe => (
             <CarouselItem
               key={recipe.slug}
-              className={size === 'sm' ? 'basis-[22%]' : 'basis-[26%]'}
+              className={cn(
+                "group transition-transform duration-300 will-change-transform",
+                size === 'sm' ? 'basis-[22%]' : 'basis-[26%]',
+                size === 'sm' ? 'hover:-rotate-3' : 'hover:rotate-3'
+              )}
             >
               <RecipeCard
                 recipe={recipe}

@@ -174,10 +174,6 @@
   }
 }
 
-html {
-  font-size: 18px;
-}
-
 button {
   @apply cursor-pointer;
 }

@@ -19,8 +19,8 @@ export function RecipesBanners() {
                     />
                 </div>
 
-                <div className="flex items-start gap-6 absolute top-4 bottom-4 right-4">
-                    <div className="min-w-0">
+                <div className="flex items-start gap-6 relative">
+                    <div className="absolute left-30">
                         <h2 className="text-3xl leading-none font-black italic">Got a Recipe That Rocks?</h2>
 
                         <p className="mt-1 text-sm text-white/80">
@@ -43,7 +43,7 @@ export function RecipesBanners() {
                     <Button
                         type="button"
                         variant="soft"
-                        className="shrink-0 rounded-3xl bg-white px-5 text-black hover:bg-white/90"
+                        className="shrink-0 rounded-3xl bg-white px-5 text-black hover:bg-white/90 absolute right-0 top-0"
                     >
                         <Plus />
                         Add Recipe        

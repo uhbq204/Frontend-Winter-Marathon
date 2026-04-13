@@ -106,7 +106,9 @@ export enum DietaryPreference {
 export enum Difficulty {
   Easy = 'EASY',
   Hard = 'HARD',
-  Medium = 'MEDIUM'
+  Medium = 'MEDIUM',
+  MEDIUM = "MEDIUM",
+  EASY = "EASY"
 }
 
 export enum Gender {

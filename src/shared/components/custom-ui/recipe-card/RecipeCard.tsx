@@ -18,10 +18,13 @@ interface Props {
 
 export function RecipeCard({ recipe, size }: Props) {
   return (
-    <div className={recipeCardVariants({ size })}>
+    <div className={cn(
+      recipeCardVariants({ size }),
+      "transition-shadow duration-300 group-hover:shadow-[0_3px_14px_rgba(0,0,0,0.1)]"  
+    )}>
+
       <RecipeCardImage
-        // TODO: add image to recipe and pass it here
-        image={'/images/test-recipe-image.png'}
+        image={recipe.image}
         title={recipe.title}
         size={size}
         slug={recipe.slug}
@@ -57,8 +60,7 @@ export function RecipeCard({ recipe, size }: Props) {
       <RecipeCardFooter
         difficultyLevels={recipe.difficulty}
         likes={recipe.likes}
-        // TODO: add views to recipe and pass it here
-        views={156100}
+        views={recipe.views}
         size={size}
       />
     </div>

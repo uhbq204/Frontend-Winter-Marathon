@@ -6,6 +6,7 @@ import { RecipesBanners } from "./recipes-banners/RecipesBanners"
 import { RecipesCatalog } from "./recipes-catalog/RecipesCatalog"
 import { useQuery } from "@apollo/client/react"
 import { Cuisine, DietaryPreference, GetRecipesDocument, HealthGoal, MealType, RecipeSort, SpecialOccasion } from "@/__generated__/graphql"
+import { RecipeSidebar } from "./recipes-sidebar/RecipeSidebar"
 
 
 
@@ -24,7 +25,7 @@ export function RecipesDashboard() {
 
     const debouncedSearchTerm = useDebounce(searchTerm, 400)
 
-    const { data, recommendedRecipes } = useQuery(GetRecipesDocument, {
+    const { data: recommendedRecipes } = useQuery(GetRecipesDocument, {
         variables: {
             input: {
                 ...filters,
@@ -36,7 +37,7 @@ export function RecipesDashboard() {
         }
     })
 
-    const { data, popularRecipes } = useQuery(GetRecipesDocument, {
+    const { data: popularRecipes } = useQuery(GetRecipesDocument, {
         variables: {
             input: {
                 ...filters,
@@ -50,12 +51,12 @@ export function RecipesDashboard() {
 
     return (
         <div className="grid grid-cols-[1fr_minmax(0,4.5fr)] gap-5">
-            {/* <RecipeSidebar
+            <RecipeSidebar
                 filters={filters}
                 debouncedSearchTerm={debouncedSearchTerm}
                 setSearchTerm={setSearchTerm}
                 setFilters={setFilters}
-            /> */}
+            />
             <main>
                 <RecipesBanners />
                 <RecipesCatalog 

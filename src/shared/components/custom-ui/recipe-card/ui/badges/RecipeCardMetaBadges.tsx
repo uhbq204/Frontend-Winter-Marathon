@@ -14,7 +14,7 @@ export function RecipeCardMetaBadges({ recipe, size }: Props) {
     return (
         <div className="mt-2 flex items-center gap-1">
             <RecipeCardBadge size={size}>
-                Main dish
+                {recipe.mealType}
             </RecipeCardBadge>
 
             <RecipeCardBadge Icon={Flame} size={size}>

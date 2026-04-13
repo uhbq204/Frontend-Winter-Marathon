@@ -3,13 +3,13 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../../ui/co
 import { ISidebarMenuAccordionItem } from "./sidebar-menu-accordion-type";
 import { cn } from "@/shared/utils";
 
-interface Props {
-    items: ISidebarMenuAccordionItem
-    activeValue?: string
+interface Props<K extends string = string> {
+    items: ISidebarMenuAccordionItem<K>
+    activeValue?: string | null
     onValueChange?: (value: string) => void
 }
 
-export function MenuAccordionItem({ items, activeValue, onValueChange }: Props) {
+export function MenuAccordionItem<K extends string = string>({ items, activeValue, onValueChange }: Props<K>) {
     return (
         <Collapsible defaultOpen={items.isInitiallyOpen}>
             <CollapsibleTrigger className={cn("flex items-center justify-between w-full rounded-3xl p-2", { "bg-accent": items.items.some(child => child.value === activeValue) })}>
