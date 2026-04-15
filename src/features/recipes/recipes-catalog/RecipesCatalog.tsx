@@ -1,16 +1,33 @@
-import { Difficulty, GetRecipesQuery } from "@/__generated__/graphql";
+import { GetRecipesQuery } from "@/__generated__/graphql";
 import { RecipeCarousel } from "@/features/recipe-carousel/RecipeCarousel";
 import { BookHeart, Star } from "lucide-react";
 
 
 
+interface Props {
+  recommended: GetRecipesQuery['recipes']['items']
+  popular: GetRecipesQuery['recipes']['items']
+
+  recommendedHasMore?: boolean
+  popularHasMore?: boolean
+
+  isRecommendedFetchingMore: boolean
+  isPopularFetchingMore: boolean
+
+  onLoadMoreRecommended: () => void | Promise<void>
+  onLoadMorePopular: () => void | Promise<void>
+}
+
 export function RecipesCatalog({
   recommended,
   popular,
-}: {
-  recommended: GetRecipesQuery['recipes']
-  popular: GetRecipesQuery['recipes']
-}) {
+  recommendedHasMore,
+  popularHasMore,
+  isRecommendedFetchingMore,
+  isPopularFetchingMore,
+  onLoadMoreRecommended,
+  onLoadMorePopular
+}: Props) {
   return (
     <div>
       <RecipeCarousel
@@ -18,6 +35,9 @@ export function RecipesCatalog({
         title="Recommended"
         size="default"
         recipes={recommended}
+        hasMore={recommendedHasMore}
+        isFetchingMore={isRecommendedFetchingMore}
+        onLoadMore={onLoadMoreRecommended}
       />
 
       <RecipeCarousel
@@ -25,6 +45,9 @@ export function RecipesCatalog({
         title="Popular"
         size="sm"
         recipes={popular}
+        hasMore={popularHasMore}
+        isFetchingMore={isPopularFetchingMore}
+        onLoadMore={onLoadMorePopular}
       />
     </div>
   )
