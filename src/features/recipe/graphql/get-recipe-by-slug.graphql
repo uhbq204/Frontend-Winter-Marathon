@@ -27,6 +27,7 @@ query GetRecipeBySlug($slug: String!) {
             }
         }
         recipeSteps {
+            id
             title
             description
             image
