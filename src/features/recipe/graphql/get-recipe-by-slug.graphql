@@ -21,6 +21,7 @@ query GetRecipeBySlug($slug: String!) {
             quantity
             unit
             ingredient {
+                id
                 name
                 iconUrl
                 price

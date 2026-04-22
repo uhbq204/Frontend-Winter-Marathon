@@ -7,7 +7,7 @@ import { recipeCardBadgeVariants } from "../../styles/recipe-card.styles";
 
 interface Props extends PropsWithChildren {
     Icon?: LucideIcon
-    size: TRecipeCardSize
+    size?: TRecipeCardSize
 }
 
 export function RecipeCardBadge({ Icon, size, children }: Props) {

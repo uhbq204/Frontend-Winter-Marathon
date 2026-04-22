@@ -6,7 +6,7 @@ import { Clock4, Flame } from "lucide-react";
 
 
 interface Props {
-    recipe: GetRecipesQuery['recipes'][number]
+    recipe: GetRecipesQuery['recipes']['items'][number]
     size: TRecipeCardSize
 }
 

@@ -3,6 +3,7 @@ import { recipeCardDifficultyBadgeVariants, recipeCardFooterVariants } from "../
 import { ChefHat, Eye, Heart } from "lucide-react"
 import { formatCompactNumber } from "@/shared/utils/format-compact-number.util"
 import { TRecipeCardSize } from "../types/recipe-card.types"
+import { RecipeCardDifficultyBadge } from "./badges/RecipeCardDifficultyBadge"
 
 
 
@@ -14,25 +15,12 @@ interface Props {
 }
 
 export function RecipeCardFooter({ views, likes, difficultyLevels, size }: Props) {
-    const hatCount = difficultyLevels === Difficulty.Easy ? 1 : difficultyLevels === Difficulty.Medium ? 2 : 3
-
     return (
         <div className="mt-2.5 flex items-center justify-between gap-3">
-            <div className={recipeCardDifficultyBadgeVariants({
-                    tone: difficultyLevels,
-                    size
-                })}
-            >
-                <span className="flex gap-0.5">
-                    {[...Array(hatCount)].map((_, index) => (
-                        <ChefHat
-                            key={index}
-                            className={size === 'sm' ? 'size-3' : 'size-4'}
-                        />
-                    ))}
-                </span>
-                <span className="capitalize">{difficultyLevels}</span>
-            </div>
+            <RecipeCardDifficultyBadge
+                difficultyLevels={difficultyLevels || Difficulty.Easy}
+                size={size}
+            />
 
             <div className="flex items-center gap-2">
                 <span className={recipeCardFooterVariants({ size })}>

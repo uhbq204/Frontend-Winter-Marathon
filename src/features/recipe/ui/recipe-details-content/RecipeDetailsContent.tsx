@@ -40,7 +40,7 @@ export function RecipeDetailsContent() {
                         priority
                     />
                     
-                    <RecipeDetailsInformations />
+                    <RecipeDetailsInformations recipe={recipe?.recipeBySlug} />
                 </div>
 
                 <RecipeDetailsSteps steps={recipe?.recipeBySlug.recipeSteps} />
