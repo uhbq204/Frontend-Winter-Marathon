@@ -10,13 +10,13 @@ interface Props {
 export function RecipeDetailsIngredients({ recipeIngredients }: Props) {
     return (
         <div>
-            <div className="mb-2 font-semibold">Ingredients:</div>
+            <div className="mt-2 mb-1 font-semibold">Ingredients:</div>
 
             <ul className="flex flex-wrap items-center gap-2">
                 {recipeIngredients?.map(rI => (
                     <li
                         key={rI.ingredient.id}
-                        className="border-border rounded-3xl border"
+                        className="border-border rounded-3xl border flex flex-col items-center px-3 py-1"
                     >
                         <Image
                             src={`/images/ingredients/${rI.ingredient.iconUrl}`}
@@ -24,8 +24,8 @@ export function RecipeDetailsIngredients({ recipeIngredients }: Props) {
                             width={40}
                             height={40}
                         />
-                        <span className="mt-1 opacity-65 text-xs p-2">
-                            {rI.quantity}{rI.unit[0].toLowerCase()}
+                        <span className=" mb-1 lowercase opacity-65 text-xs">
+                            {rI.quantity} {rI.unit}
                         </span>
                     </li>
                 ))} 

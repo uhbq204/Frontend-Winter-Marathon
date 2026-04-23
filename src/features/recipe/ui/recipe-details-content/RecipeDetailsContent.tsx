@@ -1,49 +1,37 @@
 'use client'
 
-import { GetRecipeBySlugDocument } from "@/__generated__/graphql"
-import { useQuery } from "@apollo/client/react"
+import { GetRecipeBySlugQuery } from "@/__generated__/graphql"
 import Image from "next/image"
-import { useParams } from "next/navigation"
 import { RecipeDetailsInformations } from "./RecipeDetailsInformations"
 import { RecipeDetailsSteps } from "../recipe-details-steps/RecipeDetailsSteps"
 import { RecipeDetailsBreadcrumbs } from "../RecipeDetailsBreadcrumbs"
-import { RecipeDetailsLoader } from "../RecipeDetailsLoader"
 
 
 
-export function RecipeDetailsContent() {
-    const params = useParams()
+interface Props {
+    recipe?: GetRecipeBySlugQuery["recipeBySlug"]
+}
 
-    const {data: recipe, loading} = useQuery(GetRecipeBySlugDocument, {
-        variables: {
-            slug: params.slug?.toString() || ""
-        },
-        skip: !params.slug
-    })
-
-    if (loading) {
-        return <RecipeDetailsLoader />
-    }
-
+export function RecipeDetailsContent({ recipe }: Props) {
     return (
         <div>
-            <RecipeDetailsBreadcrumbs title={recipe?.recipeBySlug.title} />
+            <RecipeDetailsBreadcrumbs title={recipe?.title} />
             <div className="bg-white p-5 rounded-3xl">
                 <div className="grid grid-cols-2 gap-5">
                     <Image
-                        src={recipe?.recipeBySlug.image || ""}
-                        alt={recipe?.recipeBySlug.title || ""}
+                        src={recipe?.image || ""}
+                        alt={recipe?.title || ""}
                         width={800}
-                        height={400}
+                        height={450}
                         className="h-auto w-full rounded-3xl object-cover"
                         draggable={false}
                         priority
                     />
                     
-                    <RecipeDetailsInformations recipe={recipe?.recipeBySlug} />
+                    <RecipeDetailsInformations recipe={recipe} />
                 </div>
 
-                <RecipeDetailsSteps steps={recipe?.recipeBySlug.recipeSteps} />
+                <RecipeDetailsSteps steps={recipe?.recipeSteps} />
             </div>
         </div>
     )

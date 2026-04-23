@@ -13,12 +13,13 @@ interface Props {
 export function RecipeDetailsInformations({ recipe }: Props) {
     return (
         <div>
-            <div className="flex items-center justify-between">
-                <h1 className="text-3xl font-bold leading-tight italic">
+            <div className="flex items-start justify-between">
+                <h1 className="text-4xl font-bold leading-tight italic">
                     {recipe?.title}
                 </h1>
-
-                <RecipeDetailsActions />
+                <div className="shrink-0">
+                    <RecipeDetailsActions />
+                </div>
             </div>
 
             <RecipeDetailsMeta recipe={recipe} />

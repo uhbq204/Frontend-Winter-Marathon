@@ -12,9 +12,9 @@ interface Props {
 
 export function RecipeDetailsMeta({ recipe }: Props) {
     return (
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mt-3">
             <div>
-                <div className="mt-4 flex items-center gap-2">
+                <div className="flex items-center gap-2">
                     <RecipeCardBadge>{recipe?.mealType}</RecipeCardBadge>
 
                     <RecipeCardBadge Icon={Flame}>
@@ -41,13 +41,15 @@ export function RecipeDetailsMeta({ recipe }: Props) {
                     className="h-auto w-5 rounded-full"
                     draggable={false}
                 />
-                <span>@{recipe?.author.profile?.fullName || "anonymous"}</span>
-                <button className="rounded-3xl bg-violet-300 p-0.5 font-semibold">
+                <span className="opacity-65">
+                    @{recipe?.author.profile?.fullName || "anonymous"}
+                </span>
+                <button className="rounded-3xl bg-violet-300 px-2 font-semibold flex items-center ml-2">
                     <UserPlus
                         size={16}
                         className="fill-violet-500"
                     />
-                    <span className="ml-1 text-violet-500">Follow</span>
+                    <span className="text-violet-500">Follow</span>
                 </button>
             </div>
         </div>
