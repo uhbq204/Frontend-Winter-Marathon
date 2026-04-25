@@ -12,7 +12,7 @@ interface Props {
 
 export function RecipeDetailsMeta({ recipe }: Props) {
     return (
-        <div className="flex items-center justify-between mt-3">
+        <div className="flex flex-wrap items-center justify-between mt-3">
             <div>
                 <div className="flex items-center gap-2">
                     <RecipeCardBadge>{recipe?.mealType}</RecipeCardBadge>
